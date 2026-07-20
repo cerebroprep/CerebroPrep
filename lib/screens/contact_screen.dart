@@ -49,7 +49,7 @@ class ContactScreen extends StatelessWidget {
               leading: const Icon(Icons.email),
               title: const Text("Email"),
               subtitle: const Text(
-                "cerebroprep.ai@gmail.com",
+                "cerebroprep.app@gmail.com",
               ),
             ),
           ),

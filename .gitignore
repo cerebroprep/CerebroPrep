@@ -47,3 +47,5 @@ app.*.map.json
 # Release signing
 keystore/
 android/key.properties
+# Android generated build folder
+android/build/
