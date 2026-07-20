@@ -9,7 +9,7 @@ val keystoreProperties = Properties().apply {
     load(FileInputStream(rootProject.file("key.properties")))
 }
 android {
-    namespace = "com.example.cerebroprep"
+    namespace = "com.cerebroprep.app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -28,7 +28,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.cerebroprep"
+        applicationId = "com.cerebroprep.app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
