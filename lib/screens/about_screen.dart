@@ -67,13 +67,13 @@ const SizedBox(height: 25),
             const ListTile(
               leading: Icon(Icons.smart_toy),
               title: Text("Powered By"),
-              subtitle: Text("Google Gemini AI"),
+              subtitle: Text("Powered by Gemini"),
             ),
 
             const ListTile(
               leading: Icon(Icons.person),
               title: Text("Developer"),
-              subtitle: Text("Sai Vamsi D"),
+              subtitle: Text("CerebroPrep"),
             ),
             const Divider(height: 40),
 
