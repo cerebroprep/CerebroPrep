@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AnswerButton extends StatelessWidget {
   final String text;
@@ -35,26 +36,32 @@ class AnswerButton extends StatelessWidget {
     }
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
+      padding: EdgeInsets.only(bottom: 12.h),
       child: SizedBox(
         width: double.infinity,
-        height: 55,
+        height: 56.h,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             backgroundColor: backgroundColor,
             foregroundColor: foregroundColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12.r),
+            ),
+            padding: EdgeInsets.symmetric(
+              horizontal: 16.w,
+              vertical: 10.h,
+            ),
           ),
-
-          // 👇 IMPORTANT CHANGE
-          onPressed: () {
-            if (!answered) {
-              onTap();
-            }
-          },
-
+          onPressed: answered ? null : onTap,
           child: Text(
             text,
-            style: const TextStyle(fontSize: 16),
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w500,
+            ),
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
           ),
         ),
       ),

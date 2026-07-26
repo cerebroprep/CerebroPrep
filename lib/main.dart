@@ -3,6 +3,7 @@ import 'screens/home_screen.dart';
 import 'services/theme_service.dart';
 import 'theme/app_theme.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,19 +48,26 @@ class CerebroPrepAppState extends State<CerebroPrepApp> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'CerebroPrep',
+Widget build(BuildContext context) {
+  return ScreenUtilInit(
+    designSize: const Size(393, 852), // Your Pixel 9 reference size
+    minTextAdapt: true,
+    splitScreenMode: true,
+    builder: (context, child) {
+      return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'CerebroPrep',
 
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
 
-      themeMode: isDark
-          ? ThemeMode.dark
-          : ThemeMode.light,
+        themeMode: isDark
+            ? ThemeMode.dark
+            : ThemeMode.light,
 
-      home: const HomeScreen(),
-    );
-  }
+        home: const HomeScreen(),
+      );
+    },
+  );
+}
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class QuestionCard extends StatelessWidget {
   final String question;
@@ -17,29 +18,30 @@ class QuestionCard extends StatelessWidget {
     return Card(
       elevation: 3,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16.r),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: EdgeInsets.all(20.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               "Question $currentQuestion of $totalQuestions",
-              style: const TextStyle(
-                fontSize: 18,
+              style: TextStyle(
+                fontSize: 18.sp,
                 fontWeight: FontWeight.bold,
                 color: Colors.grey,
               ),
             ),
 
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
 
             Text(
               question,
-              style: const TextStyle(
-                fontSize: 24,
+              style: TextStyle(
+                fontSize: 22.sp,
                 fontWeight: FontWeight.bold,
+                height: 1.4,
               ),
             ),
           ],

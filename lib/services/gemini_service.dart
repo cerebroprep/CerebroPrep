@@ -88,11 +88,7 @@ try {
         .map((item) => Question.fromJson(item))
         .toList();
   } catch (e) {
- 
-
-  throw Exception(
-    "Unable to generate quiz. Please check your internet connection and try again.",
-  );
+  throw Exception("Gemini Error: $e");
 }
 }
   }

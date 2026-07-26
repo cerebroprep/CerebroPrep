@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProgressWidget extends StatelessWidget {
   final int currentQuestion;
@@ -17,20 +18,23 @@ class ProgressWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        LinearProgressIndicator(
-          value: progress,
-          minHeight: 10,
-          borderRadius: BorderRadius.circular(12),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(12.r),
+          child: LinearProgressIndicator(
+            value: progress,
+            minHeight: 10.h,
+          ),
         ),
 
-        const SizedBox(height: 8),
+        SizedBox(height: 10.h),
 
         Text(
           "${(progress * 100).toInt()}% Completed",
           textAlign: TextAlign.center,
-          style: const TextStyle(
+          style: TextStyle(
             color: Colors.grey,
             fontWeight: FontWeight.bold,
+            fontSize: 14.sp,
           ),
         ),
       ],
