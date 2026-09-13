@@ -79,23 +79,8 @@ String lastQuizDate =
   quizzes++;
 
   xp += widget.score * 10;
-  String todayDate =
-  
-    today.toIso8601String().split("T")[0];
-
-String savedDate =
-    await UserStats.getDailyChallengeDate();
-
-bool completed =
+  bool completed =
     await UserStats.isDailyChallengeCompleted();
-
-if (savedDate != todayDate) {
-  completed = false;
-
-  await UserStats.setDailyChallengeCompleted(false);
-
-  await UserStats.saveDailyChallengeDate(todayDate);
-}
 
 if (!completed) {
   xp += 50;

@@ -144,10 +144,42 @@ static Future<List<QuizHistory>> getQuizHistory() async {
 static Future<bool> isDailyChallengeCompleted() async {
   final prefs = await SharedPreferences.getInstance();
 
-  return prefs.getBool(
-        dailyChallengeCompletedKey,
-      ) ??
-      false;
+  final completed =
+      prefs.getBool(dailyChallengeCompletedKey) ?? false;
+
+  if (!completed) {
+    return false;
+  }
+
+  final completedDate =
+      prefs.getString(dailyChallengeDateKey);
+
+  if (completedDate == null || completedDate.isEmpty) {
+    return false;
+  }
+
+  final completedTime =
+      DateTime.tryParse(completedDate);
+
+  if (completedTime == null) {
+    return false;
+  }
+
+  final now = DateTime.now();
+
+  final difference =
+      now.difference(completedTime);
+
+  if (difference.inHours >= 24) {
+    await prefs.setBool(
+      dailyChallengeCompletedKey,
+      false,
+    );
+
+    return false;
+  }
+
+  return true;
 }
 
 static Future<void> setDailyChallengeCompleted(
@@ -158,5 +190,16 @@ static Future<void> setDailyChallengeCompleted(
     dailyChallengeCompletedKey,
     value,
   );
+
+  if (value) {
+    await prefs.setString(
+      dailyChallengeDateKey,
+      DateTime.now().toIso8601String(),
+    );
+  } else {
+    await prefs.remove(
+      dailyChallengeDateKey,
+    );
+  }
 }
 }
